@@ -8,17 +8,20 @@ describe('ToDoListController', function(){
     controller = $controller('ToDoListController');
   }));
 
-  it('has a title on the webpage', function(){
-    expect(browser.getTitle()).toEqual('To-do List')
-  })
-
   it('initialises with an empty to-do list', function(){
-    expect(controller.theList).toBeUndefined();
+    expect(controller.theList).toEqual([]);
   })
 
-  //
-  // it('should create "todoList" model with 3 items', function(){
-  //
-  // })
+  describe('to-do list functionality', function(){
+    var tasks = ['shopping', 'learntocode']
+
+    it('displays a task when it has been added', function(){
+      controller.inputTask = 'shopping'
+      controller.addTask();
+      controller.inputTask = 'learntocode'
+      controller.addTask();
+      expect(controller.theList).toEqual(tasks);
+    })
+  });
 
 });
