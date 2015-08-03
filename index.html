@@ -24,8 +24,9 @@
 <div>
   <ul class="tasklist">
     <li ng-repeat="task in listController.theList">
-      {{task}}
+      {{ task }}
       <input type="checkbox" name="check">
+      <a href="#" editable-text="task">{{ "edit" || "empty" }}</a>
     </li>
   </ul>
 </div>

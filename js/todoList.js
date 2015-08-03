@@ -1,1 +1,1 @@
-var todoList = angular.module('ToDoList', []);
+var todoList = angular.module('ToDoList', ['xeditable']);
