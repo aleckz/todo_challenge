@@ -22,15 +22,33 @@
   </form>
 </div>
 <div>
-  <ul class="tasklist">
-    <li ng-repeat="task in listController.theList">
-      {{ task }}
-      <input type="checkbox" name="check">
+  <ul class="tasklist" ng-show="listController.isView(1)">
+    <li ng-repeat="item in listController.theList">
+      <span>{{ item.task }}</span>
+      <input type="checkbox" ng-click="listController.complete(item)">
       <a href="#" editable-text="task">{{ "edit" || "empty" }}</a>
+      <button type="button" ng-click="listController.removeTask($index)" class="btn btn-danger btn-sm pull-right" >Del</button></td>
+    </li>
+  </ul>
+
+  <ul class="filteredTaskList" ng-show="listcontroller.isView(2)">
+    <li class="list-group-item" ng-repeat="item in listcontroller.theList | filter:{completed: false}">
+      <span>{{item.task}}</span>
+    </li>
+  </ul>
+
+  <ul class="filteredTaskList" ng-show="listcontroller.isView(3)">
+    <li class="list-group-item" ng-repeat="item in listcontroller.theList | filter:{completed: true}">
+      <span>{{item.task}}</span>
     </li>
   </ul>
 </div>
 
+<button class="btn-large" ng-click="listController.setView(1)">All</button>
+      <button class="btn-large" ng-click="listController.setView(2)">Uncompleted</button>
+      <button class="btn-large" ng-click="listController.setView(3)">Completed</button>
+      <button class="btn-large" ng-click="listController.clearCompleted()">Clear completed</button>
+      <button class="btn-large" ng-click="listController.clearAll()">Clear All</button>
 </body>
 
 

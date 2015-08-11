@@ -17,5 +17,8 @@ describe('to do list', function(){
     expect(element(by.binding('task')).getText()).toEqual('shopping')
   });
 
-  
+  it('can edit tasks with a list', function(){
+
+  });
+
 });
